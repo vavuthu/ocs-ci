@@ -6,6 +6,7 @@ import traceback
 import yaml
 import sys
 import os
+import platform
 import logging
 import importlib
 import time
@@ -108,6 +109,11 @@ def run(args):
 
     if cleanup_name:
         pass  # TODO: cleanup cluster and skip test execution
+
+    # Check if we are running on windows and bail out sooner
+    if platform.system() == "Windows":
+        log.info("OS not supported by Openshift Installer")
+        return 1
 
     if suite_file:
         suites_path = os.path.abspath(suite_file)
