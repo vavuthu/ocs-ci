@@ -174,7 +174,7 @@ def appliance_mode_cluster(cluster_name):
         f"rosa create service --type {addon_name} --name {cluster_name} "
         f"--machine-cidr {machine_cidr} --size {size} "
         f"--onboarding-validation-key {public_key_only} "
-        f"--subnet-ids {subnet_ids}"
+        f"--subnet-ids {subnet_ids} --debug"
     )
     if private_link:
         cmd += " --private-link "
