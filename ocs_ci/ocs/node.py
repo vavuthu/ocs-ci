@@ -969,8 +969,41 @@ def delete_and_create_osd_node_vsphere_upi(osd_node_name, use_existing_node=Fals
 
     osd_node = get_node_objs(node_names=[osd_node_name])[0]
     remove_nodes([osd_node])
+    from ocs_ci.ocs.platform_nodes import PlatformNodesFactory
+
+    plt = PlatformNodesFactory()
+    node_util = plt.get_nodes_platform()
+    node_util.terminate_nodes([osd_node])
 
     log.info(f"name of deleted node = {osd_node_name}")
+
+    import os
+    from ocs_ci.deployment.terraform import Terraform
+
+    previous_dir = os.getcwd()
+    cluster_path = config.ENV_DATA["cluster_path"]
+    terraform_data_dir = os.path.join(cluster_path, constants.TERRAFORM_DATA_DIR)
+    upi_repo_path = os.path.join(
+        constants.EXTERNAL_DIR,
+        "installer",
+    )
+
+    bin_dir = os.path.expanduser(config.RUN["bin_dir"])
+    terraform_filename = "terraform"
+    terraform_binary_path = os.path.join(bin_dir, terraform_filename)
+    config.ENV_DATA["terraform_installer"] = terraform_binary_path
+
+    instance = f"{osd_node_name}.{config.ENV_DATA.get('cluster_name')}.{config.ENV_DATA.get('base_domain')}"
+
+    terraform = Terraform(os.path.join(upi_repo_path, "upi/vsphere/"))
+    os.chdir(terraform_data_dir)
+    terraform.change_statefile(
+        module="compute_vm",
+        resource_type="vsphere_virtual_machine",
+        resource_name="vm",
+        instance=instance,
+    )
+    os.chdir(previous_dir)
 
     if config.ENV_DATA.get("rhel_workers"):
         node_type = constants.RHEL_OS
