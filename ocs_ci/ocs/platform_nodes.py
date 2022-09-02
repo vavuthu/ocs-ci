@@ -1521,7 +1521,7 @@ class VSPHEREUPINode(VMWareNodes):
             compute_count_line.split("=")[1].strip().strip('"')
         )
 
-        self.target_compute_count = self.current_count_in_tfvars + self.compute_count
+        self.target_compute_count = self.current_compute_count + self.compute_count
 
         # update the terraform installer path in ENV_DATA
         # DON'T download terraform again since we need to use the same
