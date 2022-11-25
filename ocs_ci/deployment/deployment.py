@@ -639,7 +639,7 @@ class Deployment(object):
 
         # create multus network
         if config.ENV_DATA.get("is_multus_enabled"):
-            logger.info("Creating multus network")
+            logger.info("Creating multus public network")
             multus_data = templating.load_yaml(constants.MULTUS_YAML)
             multus_config_str = multus_data["spec"]["config"]
             multus_config_dct = json.loads(multus_config_str)
@@ -653,6 +653,21 @@ class Deployment(object):
             )
             templating.dump_data_to_temp_yaml(multus_data, multus_data_yaml.name)
             run_cmd(f"oc create -f {multus_data_yaml.name}")
+
+            logger.info("Creating multus cluster network")
+            multus_cluster_data = templating.load_yaml(constants.MULTUS_CLUSTER_YAML)
+            multus_cluster_config_str = multus_cluster_data["spec"]["config"]
+            multus_cluster_config_dct = json.loads(multus_cluster_config_str)
+            multus_cluster_data["spec"]["config"] = json.dumps(
+                multus_cluster_config_dct
+            )
+            multus_cluster_data_yaml = tempfile.NamedTemporaryFile(
+                mode="w+", prefix="multus_cluster", delete=False
+            )
+            templating.dump_data_to_temp_yaml(
+                multus_cluster_data, multus_cluster_data_yaml.name
+            )
+            run_cmd(f"oc create -f {multus_cluster_data_yaml.name}")
 
         disable_addon = config.DEPLOYMENT.get("ibmcloud_disable_addon")
         managed_ibmcloud = (
@@ -993,7 +1008,8 @@ class Deployment(object):
             cluster_data["spec"]["network"] = {
                 "provider": "multus",
                 "selectors": {
-                    "public": f"{defaults.ROOK_CLUSTER_NAMESPACE}/ocs-public"
+                    "public": f"{defaults.ROOK_CLUSTER_NAMESPACE}/ocs-public",
+                    "cluster": f"{defaults.ROOK_CLUSTER_NAMESPACE}/ocs-cluster",
                 },
             }
 

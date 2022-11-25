@@ -617,6 +617,7 @@ TEMPLATE_IMAGE_CONTENT_SOURCE_POLICY_YAML = os.path.join(
 )
 
 MULTUS_YAML = os.path.join(TEMPLATE_DEPLOYMENT_DIR, "multus.yaml")
+MULTUS_CLUSTER_YAML = os.path.join(TEMPLATE_DEPLOYMENT_DIR, "multus_internal.yaml")
 
 OPERATOR_SOURCE_NAME = "ocs-operatorsource"
 
