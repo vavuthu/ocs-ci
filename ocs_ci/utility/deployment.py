@@ -77,6 +77,12 @@ def create_external_secret(ocs_version=None, apply=False):
     )
     templating.dump_data_to_temp_yaml(secret_data, secret_data_yaml.name)
     logger.info(f"Creating external cluster secret for OCS version: {ocs_version}")
+    logger.info(
+        "sleeping for 120 seconds so that we can disconnect network of rgw endpoint"
+    )
+    import time
+
+    time.sleep(120)
     oc_type = "apply" if apply else "create"
     run_cmd(f"oc {oc_type} -f {secret_data_yaml.name}")
 
