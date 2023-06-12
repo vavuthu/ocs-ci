@@ -1,4 +1,4 @@
-# OCS-CI
+#### OCS-CI
 
 OCS CI is a framework to test Red Hat OCS features and functionality using AWS
 and other supported platforms. The framework is based on pytest.
