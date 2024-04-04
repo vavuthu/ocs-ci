@@ -30,5 +30,6 @@ tests/functional/pv/pvc_resize/test_pvc_expansion.py::TestPvcExpand::test_pvc_ex
 tests/functional/pv/pvc_snapshot/test_pvc_snapshot.py::TestPvcSnapshot::test_pvc_snapshot[CephBlockPool]
 tests/functional/pv/pv_services/test_raw_block_pv.py::TestRawBlockPV::test_raw_block_pv[Delete]
 tests/functional/pv/pv_services/test_raw_block_pv.py::TestRawBlockPV::test_raw_block_pv[Retain]
+tests/functional/pv/pvc_clone/test_pvc_to_pvc_clone.py::TestClone::test_pvc_to_pvc_rox_shallow_vol_post_clone[CephFileSystem-ReadWriteMany]
 tests/test_failure_propagator.py::TestFailurePropagator::test_failure_propagator
 tests/test_failure_propagator.py::TestFailurePropagator::test_report_skip_triggering_test
