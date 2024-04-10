@@ -11,7 +11,6 @@ tests/functional/pv/pv_services/test_dynamic_pvc_accessmodes_with_reclaim_polici
 tests/functional/pv/pv_services/test_pvc_assign_pod_node.py::TestPvcAssignPodNode::test_rwx_pvc_assign_pod_node[CephFileSystem]
 tests/functional/pv/pvc_clone/test_pvc_to_pvc_clone.py::TestClone::test_pvc_to_pvc_clone[CephFileSystem-None-ReadWriteOnce]
 tests/functional/pv/pvc_clone/test_pvc_to_pvc_clone.py::TestClone::test_pvc_to_pvc_rox_clone[CephFileSystem-ReadWriteMany]
-tests/functional/pv/pvc_clone/test_pvc_to_pvc_clone.py::TestClone::test_pvc_to_pvc_rox_shallow_vol_post_clone[CephFileSystem-ReadWriteMany]
 tests/functional/pv/pv_services/test_pvc_assign_pod_node.py::TestPvcAssignPodNode::test_rwo_pvc_assign_pod_node[CephFileSystem]
 tests/functional/pv/pv_services/test_dynamic_pvc_accessmodes_with_reclaim_policies.py::TestDynamicPvc::test_rwx_dynamic_pvc[CephFileSystem-Delete]
 tests/functional/pv/pv_services/test_dynamic_pvc_accessmodes_with_reclaim_policies.py::TestDynamicPvc::test_rwo_dynamic_pvc[CephBlockPool-Retain]
@@ -25,6 +24,7 @@ tests/functional/pv/pv_services/test_pvc_assign_pod_node.py::TestPvcAssignPodNod
 tests/functional/object/rgw/test_rgw_pod_existence.py::TestRGWPodExistence::test_rgw_pod_existence
 tests/functional/object/rgw/test_bucket_creation.py::TestRGWBucketCreation::test_bucket_creation[3-RGW-OC]
 tests/functional/object/rgw/test_bucket_deletion.py::TestBucketDeletion::test_bucket_delete[3-RGW-OC]
+tests/functional/pv/pvc_clone/test_pvc_to_pvc_clone.py::TestClone::test_pvc_to_pvc_rox_shallow_vol_post_clone[CephFileSystem-ReadWriteMany]
 tests/functional/pv/pv_services/test_pvc_assign_pod_node.py::TestPvcAssignPodNode::test_rwo_pvc_assign_pod_node[CephBlockPool]
 tests/cross_functional/system_test/multicluster/test_post_installation_state.py::TestPostInstallationState::test_consumers_capacity
 tests/cross_functional/system_test/multicluster/test_post_installation_state.py::TestPostInstallationState::test_consumers_ceph_resources
