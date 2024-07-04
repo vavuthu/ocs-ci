@@ -5,6 +5,20 @@ metadata:
   namespace: openshift-storage
   name: ocs-storagecluster
 spec:
+  coreResources:
+    limits:
+      cpu: 999m
+      memory: 4Gi
+    requests:
+      cpu: 999m
+      memory: 4Gi
+  dbResources:
+    limits:
+      cpu: 500m
+      memory: 4Gi
+    requests:
+      cpu: 500m
+      memory: 4Gi
   storageDeviceSets:
   - name: ocs-deviceset
     count: 1
