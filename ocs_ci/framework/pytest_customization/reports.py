@@ -89,6 +89,7 @@ def pytest_sessionfinish(session, exitstatus):
         save_reports()
     if ocsci_config.RUN["cli_params"].get("email"):
         email_reports(session)
+    log.info(f"config._metadata: {session.config._metadata}")
 
     # creating report of test cases with total time in ascending order
     data = GV.TIMEREPORT_DICT
