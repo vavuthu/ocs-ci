@@ -437,6 +437,8 @@ def pytest_configure(config):
             check_clusters()
             if ocsci_config.RUN.get("cephcluster"):
                 gather_version_info_for_report(config)
+            log.info(f"config._metadata: {config._metadata}")
+            print(f"config._metadata: {config._metadata}")
     # switch the configuration context back to the default cluster
     ocsci_config.switch_default_cluster_ctx()
 
