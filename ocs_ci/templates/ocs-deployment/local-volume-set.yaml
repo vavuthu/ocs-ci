@@ -7,7 +7,6 @@ spec:
     deviceInclusionSpec:
       deviceMechanicalProperties:
       - Rotational
-      - NonRotational
       deviceTypes:
       - disk
       - part
