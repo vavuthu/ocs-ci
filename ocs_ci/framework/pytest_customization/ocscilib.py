@@ -365,6 +365,7 @@ def pytest_configure(config):
         config (pytest.config): Pytest config object
 
     """
+    print(f"Initial config._metadata in PYTEST_CONFIGURE: {config._metadata}")
     set_log_level(config)
     # Set the new factory for the logging of pytest
     set_log_record_factory()
@@ -469,6 +470,7 @@ def gather_version_info_for_report(config):
         config._metadata["OCS operator"] = get_ocs_build_number()
         mods = {}
         mods = get_version_info(namespace=ocsci_config.ENV_DATA["cluster_namespace"])
+        print(f"mods: {mods}")
         skip_list = ["ocs-operator"]
         for key, val in mods.items():
             if key not in skip_list:
