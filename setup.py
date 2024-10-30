@@ -31,7 +31,6 @@ setup(
         "pytest==6.2.5",
         "pytest-logger==0.5.1",
         "pytest-html==3.1.1",
-        "pytest-metadata==1.11.0",
         "bs4==0.0.1",
         "gspread==3.6.0",
         "google-auth-oauthlib==0.7.1",
