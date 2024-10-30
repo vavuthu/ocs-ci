@@ -450,6 +450,7 @@ def gather_version_info_for_report(config):
     """
     gather_version_completed = False
     try:
+        print(f"Initial config._metadata: {config._metadata}")
         # add cluster version
         clusterversion = get_cluster_version()
         config._metadata["Cluster Version"] = clusterversion
@@ -487,6 +488,8 @@ def gather_version_info_for_report(config):
                 "Failed to gather version details! The report of version might"
                 "not be complete!"
             )
+    print(f"End config._metadata: {config._metadata}")
+    print(f" environmental variables: {os.environ}")
 
 
 def get_cli_param(config, name_of_param, default=None):
