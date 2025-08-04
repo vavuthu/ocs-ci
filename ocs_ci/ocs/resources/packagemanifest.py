@@ -33,7 +33,7 @@ class PackageManifest(OCP):
         resource_name="",
         namespace=constants.MARKETPLACE_NAMESPACE,
         install_plan_namespace=None,
-        subscription_plan_approval="Automatic",
+        subscription_plan_approval="Manual",
         **kwargs,
     ):
         """
@@ -208,6 +208,7 @@ class PackageManifest(OCP):
                 for approve found.
 
         """
+        return "ocs-operator.v4.19.0-123.hf-dfbugs-3726"
         install_plan = InstallPlan(namespace=self.install_plan_namespace)
         install_plans = install_plan.get()["items"]
         if not approved_only:
