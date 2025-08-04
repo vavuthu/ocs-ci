@@ -208,7 +208,7 @@ class PackageManifest(OCP):
                 for approve found.
 
         """
-        return "ocs-operator.v4.19.0-123.hf-dfbugs-3726"
+        return "ocs-operator.v4.19.0-rhodf"
         install_plan = InstallPlan(namespace=self.install_plan_namespace)
         install_plans = install_plan.get()["items"]
         if not approved_only:
