@@ -154,7 +154,7 @@ from ocs_ci.utility import (
     pgsql,
     version,
 )
-from ocs_ci.utility.aws import update_config_from_s3, create_and_attach_sts_role
+from ocs_ci.utility.aws import update_config_from_s3
 from ocs_ci.utility.multicluster import create_mce_catsrc
 from ocs_ci.utility.operators import NMStateOperator
 from ocs_ci.utility.retry import retry
@@ -1264,8 +1264,8 @@ class Deployment(object):
 
         if aws_sts_deployment:
             log_step("Create STS role and attach AmazonS3FullAccess Policy")
-            role_data = create_and_attach_sts_role()
-            self.sts_role_arn = role_data["Role"]["Arn"]
+            # role_data = create_and_attach_sts_role()
+            # self.sts_role_arn = role_data["Role"]["Arn"]
         stage_testing = config.DEPLOYMENT.get("stage_rh_osbs")
         konflux_build = config.DEPLOYMENT.get("konflux_build")
         upgrade = config.UPGRADE.get("upgrade", False)
