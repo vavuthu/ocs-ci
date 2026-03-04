@@ -738,20 +738,20 @@ class OCSUpgrade(object):
         stage_testing = config.DEPLOYMENT.get("stage_rh_osbs")
         konflux_build = config.DEPLOYMENT.get("konflux_build")
         if konflux_build and stage_testing:
-            log_step("Creating stage TagMirrorSet")
-            exec_cmd(f"oc apply -f {constants.STAGE_TAG_MIRROR_SET_YAML}")
-            log_step("Creating stage ImageDigestMirrorSet")
-            exec_cmd(f"oc apply -f {constants.STAGE_IMAGE_DIGEST_MIRROR_SET_YAML}")
-            log_step("Sleeping 60 seconds after applying tag mirror set.")
-            time.sleep(60)
-            log_step("Waiting max 30 mins for master MCP to get updated")
-            exec_cmd(
-                "oc wait --for=condition=Updated --timeout=30m mcp/master", timeout=2100
-            )
-            log_step("Waiting max 30 mins for worker MCP to get updated")
-            exec_cmd(
-                "oc wait --for=condition=Updated --timeout=30m mcp/worker", timeout=2100
-            )
+            log_step("Already upgrade images are set")
+            # exec_cmd(f"oc apply -f {constants.STAGE_TAG_MIRROR_SET_YAML}")
+            # log_step("Creating stage ImageDigestMirrorSet")
+            # exec_cmd(f"oc apply -f {constants.STAGE_IMAGE_DIGEST_MIRROR_SET_YAML}")
+            # log_step("Sleeping 60 seconds after applying tag mirror set.")
+            # time.sleep(60)
+            # log_step("Waiting max 30 mins for master MCP to get updated")
+            # exec_cmd(
+            #     "oc wait --for=condition=Updated --timeout=30m mcp/master", timeout=2100
+            # )
+            # log_step("Waiting max 30 mins for worker MCP to get updated")
+            # exec_cmd(
+            #     "oc wait --for=condition=Updated --timeout=30m mcp/worker", timeout=2100
+            # )
             return
         if not self.upgrade_in_current_source:
             disable_specific_source(constants.OPERATOR_CATALOG_SOURCE_NAME)
